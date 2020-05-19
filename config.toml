@@ -1,0 +1,49 @@
+baseURL = "https://pepegar.com/"
+languageCode = "en-us"
+title = "pepegar"
+theme = "hugo-tufte"
+
+# Code Highlight
+pygmentsstyle = "trac"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+
+[params]
+	mode="auto" # color-mode → light,dark or auto
+	featherIconsCDN=true
+	subtitle = "Rants about computers"
+    
+[[params.social]]
+name = "GitHub"
+icon = "github"
+url = "https://github.com/pepegar"
+
+[[params.social]]
+name = "Twitter"
+icon = "twitter"
+url = "https://twitter.com/_pepegar"
+
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "Posts"
+url = "/posts"
+weight = 2
+
+[[menu.main]]
+name = "About"
+url = "/about"
+weight = 3
+
+[[menu.main]]
+name = "Tags"
+url = "/tags"
+weight = 4
+
+[[menu.main]]
+name = "Braindump"
+url = "https://braindump.pepegar.com"
+weight = 5
