@@ -4,7 +4,7 @@ title = "pepegar"
 theme = "hugo-tufte"
 
 # Code Highlight
-pygmentsstyle = "trac"
+pygmentsstyle = "monokai"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
