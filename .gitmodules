@@ -1,3 +1,3 @@
 [submodule "themes/hugo-tufte"]
 	path = themes/hugo-tufte
-	url = git@github.com:pepegar/hugo-tufte
+	url = https://github.com/pepegar/hugo-tufte.git
