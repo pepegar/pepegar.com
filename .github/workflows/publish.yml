@@ -16,7 +16,6 @@ jobs:
           POST_TITLE: ${{ github.event.issue.title }}
           POST_BODY: ${{ github.event.issue.body }}
         run: |
-          echo $POST_BODY
           preprocess_bin="$PWD/frontmatterify"
           save_to="content/posts/$POST_TITLE"
           mkdir "$save_to"
