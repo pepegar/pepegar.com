@@ -1,10 +1,9 @@
 ---
 name: Post
 about: Create a new post
-title: ''
-labels: ''
-assignees: ''
-
+title: 'New post'
+labels: 'publish'
+assignees: 'pepegar'
 ---
 
 # Title
