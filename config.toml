@@ -44,6 +44,6 @@ url = "/tags"
 weight = 4
 
 [[menu.main]]
-name = "Braindump"
-url = "https://braindump.pepegar.com"
+name = "Neuron"
+url = "https://neuron.pepegar.com"
 weight = 5
