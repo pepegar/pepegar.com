@@ -1,4 +1,5 @@
 baseURL = "https://pepegar.com/"
+
 languageCode = "en-us"
 title = "pepegar"
 theme = "hugo-tufte"
