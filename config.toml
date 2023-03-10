@@ -43,7 +43,7 @@ name = "Tags"
 url = "/tags"
 weight = 4
 
-[[menu.main]]
-name = "Neuron"
-url = "https://neuron.pepegar.com"
-weight = 5
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
