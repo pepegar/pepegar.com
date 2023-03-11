@@ -1,3 +1,9 @@
+@font-face {
+    font-family: victor;
+    font-style: normal;
+    src: url(../fonts/VictorMono-Regular.ttf) format('truetype');
+}
+
 html {
     box-sizing: border-box;
 }
@@ -8,6 +14,13 @@ html {
     box-sizing: inherit;
 }
 
+pre code {
+    margin: 2rem 0 2rem 0;
+    width: 97.5%;
+    overflow-x: auto;
+    font-size: 16px;
+}
+
 body {
     font-family: "Source Serif Pro", "Apple Garamond", "Baskerville", "Libre Baskerville", "Droid Serif", "Times New Roman", "Times", serif, "Noto Emoji", "Quivira";
     font-size: 22px;
@@ -15,6 +28,7 @@ body {
 }
 
 code {
+    font-family: victor;
     font-size: 16px;
 }
 
@@ -51,4 +65,3 @@ h6 {
         color: #aaa;
     }
 }
-
