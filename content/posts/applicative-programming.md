@@ -19,11 +19,11 @@ programming with effects_][idioms].
 
 As the begin of this writeup, let's first introduce the typeclass:
 
-```haskell
+{{< highlight haskell >}}
 class Functor f => Applicative f where
     pure :: a -> f a
     (<*>) :: f (a -> b) -> f a -> f b
-```
+{{< /highlight >}}
 
 Simple enough, this typeclass allows you to put elements inside an `Applicative`
 context –with `pure`–, and _smash_ `Applicative` values together through `<*>`.
