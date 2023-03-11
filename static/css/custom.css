@@ -1,0 +1,54 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: "Source Serif Pro", "Apple Garamond", "Baskerville", "Libre Baskerville", "Droid Serif", "Times New Roman", "Times", serif, "Noto Emoji", "Quivira";
+    font-size: 22px;
+    font-weight: 400;
+}
+
+code {
+    font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-variant: small-caps;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #222222;
+        color: #f1f1f1;
+    }
+
+    a {
+        color: #8cc2dd;
+    }
+
+    blockquote {
+        color: #ccc;
+    }
+
+    textarea,
+    input {
+        background-color: #252525;
+        color: #ddd;
+    }
+
+    .helptext {
+        color: #aaa;
+    }
+}
+

@@ -232,8 +232,8 @@ getPage postId authorId = Page <$> getPost postId
                                   <*> getAuthor authorId
 ```
 
-{{% sidenote `Idiom is a synonym for Applicative Functor` %}}Boom! Since there were no depencencies between our `getPost`, and `getAuthor`
-operations, we can compose them idiomatically. {{% /sidenote %}}
+{{% sidenote %}} Idiom is a synonym for Applicative Functor{{% /sidenote %}}Boom! Since there were no depencencies between our `getPost`, and `getAuthor`
+operations, we can compose them idiomatically.
 
 But, there is a part of our problem of _rendering a page_ that we are lacking,
 it is [drawing the rest of the f*cking owl][owl].  Right now, we are not going to the
@@ -273,7 +273,7 @@ main = do
 -- Page {post = Post {id = 1, title = "this is the post", content = "content of the post", excerpt = "excerpt"}, author = Author {name = "Pepe", lastName = "Garc\237a"}}
 ```
 
-{{% sidenote `Only if you understand someting that runs on the command line, and does not have access to the database as _fully functioning_.` %}}And this, simply, is our fully functioning blog! {{% /sidenote %}} 
+{{% sidenote %}} Only if you understand someting that runs on the command line, and does not have access to the database as _fully functioning_.{{% /sidenote %}}And this, simply, is our fully functioning blog! 
 
 As you can imagine, `runAp` is part of the [free][free] library, and it takes
 first a _Natural Transformation_ on any two functors, and then an `Ap f a`, and
@@ -287,12 +287,11 @@ the code execution is done by our interpreter.
 
 ## Static Analysis
 
-{{% sidenote `Static analysis, is a technique with which wecan know stuff about a program without evaluating it.` %}}
+{{% sidenote %}} Static analysis, is a technique with which wecan know stuff about a program without evaluating it.{{% /sidenote %}}
 One of the coolest things that we can do with Applicative Abstract Syntax Trees
 is static analysis. And this is because applicative programs, unlike monadic programs, are not dependent on
 runtime values. In other words, we can know more about our program, without
 evaluating it.
-{{% /sidenote %}}
 
 So now, imagine that you want to limit the number of requests to the DB that
 your `Blog` programs have to 10.  If you know that any expression `GetAuthor` or

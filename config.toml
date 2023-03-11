@@ -12,7 +12,10 @@ pygmentscodefencesguesssyntax = true
 staticDir = ['static']
 
 [params]
-  customCss = ["css/sidenote.css"]
+  customCss = [
+    "css/sidenote.css",
+    "css/custom.css",
+  ]
 	mode="auto" # color-mode → light,dark or auto
 	featherIconsCDN=true
 	subtitle = "Rants about computers"
