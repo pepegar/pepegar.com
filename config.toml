@@ -47,7 +47,4 @@ weight = 3
       unsafe = true
 
   [markup.highlight]
-    hl_Lines = ""
-    lineNos = true
-    tabWidth = 4
     noClasses = false

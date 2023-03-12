@@ -22,7 +22,6 @@
 
 @media (prefers-color-scheme: dark) {
     .sidenote {
-        background-color: #333;
         display: block;
         float: right;
         border: 1px solid #ccc;
