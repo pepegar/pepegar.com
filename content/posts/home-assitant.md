@@ -1,7 +1,8 @@
 ---
-title: "Managing my smart home"
-date: 2016-09-20T01:26:43+02:00
-tags: [haskell, functional-programming]
-draft: true
+title: "Integrate Sonnen batteries with Home Assistant"
+date: 2023-03-12
+tags: [home-assistant]
 toc: true
+draft: true
 ---
+

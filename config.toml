@@ -2,7 +2,7 @@ baseURL = "https://pepegar.com/"
 
 languageCode = "en-us"
 title = "pepegar"
-theme = "hugo-bearblog"
+theme = "hugo-pepegar"
 
 # Code Highlight
 pygmentsstyle = "monokai"
@@ -20,6 +20,7 @@ staticDir = ['static']
 	mode="auto" # color-mode → light,dark or auto
 	featherIconsCDN=true
 	subtitle = "Rants about computers"
+  hideMadeWithLine = true
     
 [[params.social]]
 name = "GitHub"

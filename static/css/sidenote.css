@@ -3,7 +3,7 @@
     display: block;
     float: right;
     width: 200px;
-    border: 1px solid #ccc;
+    border-left: 1px solid #ccc;
     margin: 10px;
     padding: 10px;
 }
@@ -14,9 +14,9 @@
         position: absolute;
         right: calc(50% - 630px);
         width: 250px;
-        border: 1px solid #000;
         margin: 0;
-        padding: 15x
+        padding: 15x;
+        background: #faf4ed;
     }
 }
 
@@ -24,6 +24,6 @@
     .sidenote {
         display: block;
         float: right;
-        border: 1px solid #ccc;
+        background:#252525;
     }
 }

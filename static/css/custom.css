@@ -3,6 +3,7 @@
     font-style: normal;
     src: url(../fonts/VictorMono-Regular.ttf) format('truetype');
 }
+
 @font-face {
     font-family: VictorMono;
     font-style: italic;
@@ -42,6 +43,7 @@ h4,
 h5,
 h6 {
     font-variant: small-caps;
+    color: #286983;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -66,5 +68,26 @@ h6 {
 
     .helptext {
         color: #aaa;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: #ebbcba;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .toc {
+        float: none;
+        z-index: 0;
+        position: fixed;
+        top: 150px;
+        left: calc(50% - 630px);
+        width: 250px;
+        margin: 0;
     }
 }
