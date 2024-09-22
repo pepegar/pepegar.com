@@ -32,15 +32,21 @@ name = "Twitter"
 icon = "twitter"
 url = "https://twitter.com/_pepegar"
 
-[[menu.main]]
+[[params.menu]]
 name = "Posts"
 url = "/posts"
 weight = 2
 
-[[menu.main]]
+[[params.menu]]
 name = "About"
 url = "/about"
 weight = 3
+
+[[params.menu]]
+name = "Courses"
+url = "/courses"
+weight = 2
+
 
 [markup]
   [markup.goldmark]
