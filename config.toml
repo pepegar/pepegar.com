@@ -2,7 +2,7 @@ baseURL = "https://pepegar.com/"
 
 languageCode = "en-us"
 title = "pepegar"
-theme = "hugo-pepegar"
+theme = "paperesque"
 
 # Code Highlight
 pygmentsstyle = "monokai"
