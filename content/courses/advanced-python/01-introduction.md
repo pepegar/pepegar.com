@@ -1,0 +1,65 @@
+---
+title: 1. Introduction
+---
+
+This course is for people that know a little bit of Python already, but want to
+dig deeper into some more advanced tools and techniques used in Python
+nowadays.
+
+It is biased towards simplicity & ease of use.  I've selected some tools
+instead of others like FastAPI[^fastapi] and UV[^uv] because they make learning
+some aspects of modern Python easier.
+
+
+## Why the course?
+
+I'm a professor, I teach at IE School of Science and Technology[^hst], and I
+have a course in which i go through the materials of the course for students of
+a Masters in Computer Science.  However, I like the materials beign freely
+available.
+
+## What's in the course?
+
+The course is called Advanced Python, but one could also call it _Modern
+Python_.  In it I'll cover some newer tools and techniques that the Python
+community uses nowadays.  Things like Dataclasses, async programming, modern
+dev tools, etc.  It's not intended to be a one-stop-shop, but to spark interest
+in how things can be done nowadays with modern language features and tools.
+
+In the course, you'll obviously see a lot of code, and i'll assume you can go
+through it.  Please go to Python for Everybody[^py4e] if you don't understand
+something from the next block:
+
+```python
+class Person():
+    def __init__(self, name, title):
+        self.name = name
+        self.title = title
+
+    def salutation(self):
+        return f"{self.title}. {self.name}"
+
+
+people = [
+    Person("Pepe", "Mr"),
+    Person("Giulia", "Ms")
+]
+
+[print(person.salutation()) for person in people]
+
+i = 0
+
+while i < len(people):
+    if people[i].title == "Mr":
+        print(f"Hello Mr. {people[i].name}")
+```
+
+## TODO: find a way of listing content in Hugo and show the all the contents in the course
+
+
+[^py4e]: <https://py4e.com>. Thankfully, there's a lot of resources for
+    learning python nowadays, but I really like the style and way of teaching
+    of Py4e.  Also, it has exercises at the end of chapters that can help students.
+[^fastapi]: http://tiangolo.github.io/fastapi
+[^uv]: http://astral.sh/uv
+[^hst]: http://ie.edu/hst
