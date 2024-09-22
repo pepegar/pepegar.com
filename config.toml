@@ -17,9 +17,9 @@ staticDir = ['static']
     "css/custom.css",
     "css/syntax.css",
   ]
-	mode="auto" # color-mode → light,dark or auto
-	featherIconsCDN=true
-	subtitle = "Rants about computers"
+  mode="auto" # color-mode → light,dark or auto
+  featherIconsCDN=true
+  subtitle = "Rants about computers"
   hideMadeWithLine = true
     
 [[params.social]]
