@@ -14,7 +14,7 @@ object-oriented programming:
 
 Traditional Python classes use _reference semantics_[^1] by default:
 
-```python
+```python !python classes_reference.py
 class Potato():
     def __init__(self):
         self.weight = 100
@@ -24,19 +24,6 @@ second = Potato()
 
 print(first == second)
 ```
-
-
-<details>
-  <summary>Execution Result</summary>
-
-```
-$ python classes_reference.py
-False
-
-```
-
-</details>
-
 
 
 - Traditional classes use reference semantics by default

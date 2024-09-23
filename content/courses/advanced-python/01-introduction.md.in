@@ -30,7 +30,7 @@ In the course, you'll obviously see a lot of code, and i'll assume you can go
 through it.  Please go to Python for Everybody[^py4e] if you don't understand
 something from the next block:
 
-```python
+```python !python example.py
 class Person():
     def __init__(self, name, title):
         self.name = name
@@ -54,21 +54,6 @@ while i < len(people):
         print(f"Hello Mr. {people[i].name}")
     i += 1
 ```
-
-
-<details>
-  <summary>Execution Result</summary>
-
-```
-$ python example.py
-Mr. Pepe
-Ms. Giulia
-Hello Mr. Pepe
-
-```
-
-</details>
-
 
 ## TODO: find a way of listing content in Hugo and show the all the contents in the course
 
