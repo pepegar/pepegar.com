@@ -721,3 +721,90 @@ article table th {
     display: none;
   }
 }
+
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+  }
+
+  .look-sheet-bkg {
+    background-color: #2a2a2a;
+  }
+
+  .look-sheet {
+    background-color: #2a2a2a;
+    border-color: #444;
+  }
+
+  code {
+    background-color: #333;
+  }
+
+  pre {
+    background-color: #1e1e1e;
+    border-color: #444;
+  }
+
+  .nav-bkg {
+    background: #001525;
+    background: -webkit-linear-gradient(135deg, #001525 80%, #cc7f63 80%);
+    background: linear-gradient(135deg, #001525 80%, #cc7f63 80%);
+  }
+
+  blockquote {
+    border-left-color: #555;
+  }
+
+  a {
+    color: #5fa9ee;
+  }
+
+  .post-date, .post-tags, .post-tags a {
+    color: #aaa;
+  }
+
+  hr {
+    border-top-color: #555;
+  }
+
+  figcaption {
+    color: #aaa;
+  }
+
+  aside.article-aside {
+    background-color: #222;
+  }
+
+  .expander {
+    background-color: #222;
+  }
+
+  table {
+    border-color: #444;
+  }
+
+  table thead tr {
+    border-bottom-color: #444;
+  }
+
+  .sidepull-container > #list > ul > li {
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+  }
+
+  .sidepull-container > #list > ul > li:hover {
+    background-color: #3a3a3a;
+  }
+
+  .sidepull-container > #list > ul > li a {
+    color: #5fa9ee;
+  }
+
+  .sidepull-container > #list > ul > li .post-date,
+  .sidepull-container > #list > ul > li .post-tags {
+    color: #aaa;
+  }
+}

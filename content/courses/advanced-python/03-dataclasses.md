@@ -16,18 +16,18 @@ Traditional Python classes use _reference semantics_[^1] by default:
 
 ```python
 class Potato():
-    def __init__(self):
-        self.weight = 100
+    def __init__(self, weight):
+        self.weight = weight
 
-first = Potato()
-second = Potato()
+first = Potato(100)
+second = Potato(100)
 
 print(first == second)
 ```
 
 
 <details>
-  <summary>Execution Result</summary>
+  <summary><strong>Execution Result</strong></summary>
 
 ```
 $ python classes_reference.py
@@ -38,11 +38,38 @@ False
 </details>
 
 
+That makes comparing different objects of the class structurally hard.  You
+need to override `__eq__` method and make it work as you'd expect.
 
-- Traditional classes use reference semantics by default
-- Dataclasses make it easy to implement value semantics
-- Example: Two dataclass instances with the same attributes are considered
-equal
+On the other hand, with dataclasses, one would get _value semantics[^2]_ on
+equality checks:
+
+```python
+from dataclasses import dataclass
+
+@dataclass
+class Potato():
+    weight: int
+
+first = Potato(100)
+second = Potato(100)
+
+print(first == second)
+```
+
+
+<details>
+  <summary><strong>Execution Result</strong></summary>
+
+```
+$ python data_classes_value.py
+True
+
+```
+
+</details>
+
+
 
 #### Structural Equality
 - Dataclasses automatically generate `__eq__` method
@@ -100,10 +127,16 @@ whether to use a dataclass or a traditional class.
 
 [^1]: In reference semantics:
 
-    - Variables hold references (memory addresses) to objects, not the objects themselves.
-    - When you assign an object to a variable, you're creating a new reference to that object, not copying the object.
-    - When you pass an object to a function or method, you're passing a reference to the object, not a copy of it.
-    - Comparing two variables with == checks if they refer to the same object in memory, not if the objects have the same content.
-    - Modifying an object through one reference affects all other references to that object.
+    - Variables hold references (memory addresses) to objects, not the objects
+    themselves.
+    - When you assign an object to a variable, you're creating a new reference to
+    that object, not copying the object.
+    - When you pass an object to a function or method, you're passing a
+    reference to the object, not a copy of it.
+    - Comparing two variables with == checks if they refer to the same object
+    in memory, not if the objects have the same content.
+    - Modifying an object through one reference affects all other references to
+    that object.
 
-    This is in contrast to value semantics, where variables hold the actual data values, and assignments or comparisons involve the data itself, not references to it. Dataclasses in Python provide a way to implement value-like semantics for complex objects, making them behave more intuitively for data storage and comparison purposes.
+[^2]: value semantics is more intuitive, when comparing two objects of a
+    dataclass, it would compare them structurally.

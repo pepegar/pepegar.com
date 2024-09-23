@@ -89,7 +89,7 @@ def process_markdown(input_file, output_file, check_mode=False):
             
             result_html = f'''
 <details>
-  <summary>Execution Result</summary>
+  <summary><strong>Execution Result</strong></summary>
 
 ```
 {formatted_result}
@@ -174,4 +174,4 @@ if __name__ == "__main__":
             log_success("All files are up to date.", emoji='🎉')
             sys.exit(0)
     else:
-        log_success(f"Preprocessing completed successfully!", emoji='🎉')
+        log_success("Preprocessing completed successfully!", emoji='🎉')

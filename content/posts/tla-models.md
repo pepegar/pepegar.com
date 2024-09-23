@@ -7,9 +7,7 @@ draft: true
 
 # Specifying systems with TLA+
 
-{{% sidenote %}} centralized as opposed to distributed{{% /sidenote %}}Last weeks at work I had to work on a bug in our backend systems.  In a centralized fashion, this wouldn't have been a bug, however distributed systems are difficult.
-
-{{% tweet mathiasverraes 632260618599403520 %}}
+Last weeks at work I had to work on a bug in our backend systems.  In a centralized fashion, this wouldn't have been a bug, however distributed systems are difficult.
 
 ## How I ended up thinking about TLA+
 
@@ -17,9 +15,7 @@ In our system we N producers and M consumers for a messaging queue, and upon rec
 
 Initially we started adding different timeouts on the producer and consumer side, however, it made it very difficult for me to reason about the system.
 
-{{% sidenote %}}Here's the video, a great introduction to distributed system modelling with TLA+ {{< youtube qubS_wGgwO0 >}}{{% /sidenote %}}
-
-I initially draw the system, and tried to specify it in text, but it was still hard to reason about it... and then I remembered a talk by [Hillel Wayne][hillel] I saw some time ago.
+I initially draw the system, and tried to specify it in text, but it was still hard to reason about it... and then I remembered a talk by [Hillel Wayne][hillel][^1] I saw some time ago.
 
 > Over a long enough talk, a system will do everything.
 >
@@ -30,3 +26,6 @@ I initially draw the system, and tried to specify it in text, but it was still h
 ## Conclusion
 
 [hillel]:https://www.hillelwayne.com/
+
+[^1]: Here's the video, a great introduction to distributed system modelling with TLA+ {{< youtube qubS_wGgwO0 >}}
+

@@ -57,7 +57,7 @@ while i < len(people):
 
 
 <details>
-  <summary>Execution Result</summary>
+  <summary><strong>Execution Result</strong></summary>
 
 ```
 $ python example.py

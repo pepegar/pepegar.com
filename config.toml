@@ -5,18 +5,13 @@ title = "pepegar"
 theme = "paperesque"
 
 # Code Highlight
-pygmentsstyle = "monokai"
+pygmentsstyle = "monokailight"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
 staticDir = ['static']
 
 [params]
-  customCss = [
-    "css/sidenote.css",
-    "css/custom.css",
-    "css/syntax.css",
-  ]
   mode="auto" # color-mode → light,dark or auto
   featherIconsCDN=true
   subtitle = "Rants about computers"
