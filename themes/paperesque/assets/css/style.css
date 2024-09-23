@@ -726,10 +726,12 @@ article table th {
 /* Dark mode styles */
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: #1a1a1a;
+    background-color: #2a2a2a;
     color: #e0e0e0;
   }
-
+  .list-of-titles li a:hover {
+      background-color: #3a3a3a;
+  }
   .look-sheet-bkg {
     background-color: #2a2a2a;
   }
@@ -790,21 +792,8 @@ article table th {
     border-bottom-color: #444;
   }
 
-  .sidepull-container > #list > ul > li {
-    background-color: #2a2a2a;
+  .list-of-titles .post-title {
     color: #e0e0e0;
-  }
-
-  .sidepull-container > #list > ul > li:hover {
-    background-color: #3a3a3a;
-  }
-
-  .sidepull-container > #list > ul > li a {
-    color: #5fa9ee;
-  }
-
-  .sidepull-container > #list > ul > li .post-date,
-  .sidepull-container > #list > ul > li .post-tags {
-    color: #aaa;
+    font-size: 1.5em;
   }
 }
