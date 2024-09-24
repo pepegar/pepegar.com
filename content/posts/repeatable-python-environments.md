@@ -3,7 +3,7 @@ title: "Repeatable Python environments"
 date: 2023-03-12
 tags: [Python, teaching, cookiecutter]
 toc: true
-draft: false
+draft: true
 ---
 
 # Repeatable Python environments
