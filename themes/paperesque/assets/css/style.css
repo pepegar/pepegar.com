@@ -579,7 +579,7 @@ a.footnote-backref::before {
   position: absolute;
   right: 0;
   top: 0;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, white 20%);
+  /*background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, white 20%);*/
   color: grey;
   fill: grey;
 }
