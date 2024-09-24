@@ -699,6 +699,10 @@ article table th {
   margin-bottom: 4em;
 }
 
+#TableOfContents a {
+  color: #212529;
+}
+
 @media(min-width: 1170px) {
   .sidepull-container {
     position: relative;
@@ -734,6 +738,10 @@ article table th {
   }
   .look-sheet-bkg {
     background-color: #2a2a2a;
+  }
+
+  #TableOfContents a {
+    color: #e0e0e0;
   }
 
   .look-sheet {

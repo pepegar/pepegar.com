@@ -1,6 +1,6 @@
 <article
     id="main"
-    class="content-container look-sheet article-pad-v {{ if (or .Params.disableMarginNotes .Site.Params.disableMarginNotes) }}no-floating-footnotes{{ end }}"
+    class="content-container look-sheet article-pad-v {{ if (or .Params.disableMarginNotes .Site.Params.disableMarginNotes) }}no-floating-footnotes{{ end }} sidepull-container"
     itemscope
     itemtype="https://schema.org/Article" >
   <meta itemprop="author" content="{{ .Site.Params.Author }}" />
@@ -23,6 +23,10 @@
       <div class="post-date">Created: <span itemprop="datePublished">{{ .Date.Format "January 2, 2006" }}</span></div>
       <div class="post-date">Last Edited: <span itemprop="dateModified">{{ .Lastmod.Format "January 2, 2006" }}</span></div>
     {{ end }}
+  <div class="sidepull-side">
+    <h2>Table of contents</h2>
+    {{ .TableOfContents }}
+  </div>
   {{ end }}
   {{ if .Draft }}
     <div class="post-date">{{ .WordCount }} words</div>
