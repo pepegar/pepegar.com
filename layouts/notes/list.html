@@ -8,7 +8,6 @@
     </div>
     {{ end }}
     <div class="sidepull-main">
-      <!-- Tag cloud section -->
       {{ $tags := slice }}
       {{ range .Data.Pages }}
         {{ range .Params.tags }}
@@ -20,52 +19,38 @@
         {{ $count := index $tagCounts . | default 0 }}
         {{ $tagCounts = merge $tagCounts (dict . (add $count 1)) }}
       {{ end }}
-      
+
       {{ if gt (len $tagCounts) 0 }}
-      <div class="note-tags-cloud" style="margin-bottom: 2em; padding: 1em; background-color: var(--bg-secondary, #f8f9fa); border-radius: 8px;">
-        <h3 style="margin-top: 0;">Topics</h3>
+      <div class="note-tags-cloud">
         {{ range $tag, $count := $tagCounts }}
-          <a href="{{ (urlize (printf "/tags/%s/" $tag)) | absLangURL }}" 
-             style="display: inline-block; margin: 0.25em; padding: 0.25em 0.5em; 
-                    background-color: var(--accent-color, #007acc); color: white; 
-                    text-decoration: none; border-radius: 4px; font-size: 0.9em;">
-            {{ $tag }} ({{ $count }})
-          </a>
+          <a href="{{ (urlize (printf "/tags/%s/" $tag)) | absLangURL }}">#{{ $tag }}</a>
         {{ end }}
       </div>
       {{ end }}
 
-      <!-- Recent notes list -->
-      <h3>Recent Notes</h3>
       <ul id="list" class="list-unstyled list-of-titles">
         {{ range .Data.Pages.ByDate.Reverse }}
         {{- if .Param "mostlyHidden" -}}
           {{- continue -}}
         {{- end -}}
-        <li class="{{if .Draft }}draft{{ end }}" style="margin-bottom: 1.5em; border-left: 3px solid var(--accent-color, #007acc); padding-left: 1em;">
-          <a href="{{ .RelPermalink}}" style="text-decoration: none;">
-            <span class="post-title" style="font-weight: bold; font-size: 1.1em;">{{ .Title }}</span>
+        <li class="{{if .Draft }}draft{{ end }}">
+          <a href="{{ .RelPermalink}}">
+            <span class="post-title">{{ .Title }}</span>
             <br>
-            <span class="post-meta" style="color: var(--text-secondary, #666); font-size: 0.9em;">{{ .Date.Format "January 2, 2006" }}</span>
+            <span class="post-meta">{{ .Date.Format "January 2, 2006" }}</span>
             <br>
-            <span class="post-meta" style="color: var(--text-secondary, #666); font-size: 0.85em;">
+            <span class="post-meta">
               {{ range .Params.tags }}
                 #{{ . }}&nbsp;
               {{ end }}
             </span>
-            {{ if .Summary }}
-            <br>
-            <span class="note-summary" style="font-size: 0.95em; color: var(--text-primary, #333); margin-top: 0.5em; display: block;">
-              {{ .Summary | truncate 150 }}
-            </span>
-            {{ end }}
           </a>
         </li>
         {{ end }}
       </ul>
-      
+
       {{ if eq (len .Data.Pages) 0 }}
-      <p style="color: var(--text-secondary, #666); font-style: italic;">No notes yet. Check back soon!</p>
+      <p class="post-date" style="font-style: italic;">No notes yet.</p>
       {{ end }}
     </div>
   </div>
