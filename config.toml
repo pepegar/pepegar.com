@@ -16,6 +16,10 @@ staticDir = ['static']
   url = "posts"
 
 [[params.topmenu]]
+  name = "notes"
+  url = "notes"
+
+[[params.topmenu]]
   name = "rss"
   url = "posts/index.xml"
 

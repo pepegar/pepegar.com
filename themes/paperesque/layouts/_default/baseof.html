@@ -27,14 +27,13 @@
   <body
   class="{{ block "body-classes" . }}{{ end }}"
   lang="{{ .Site.LanguageCode }}">
-  <div class="navbar nav-bkg drop-shadow">
+  <div class="navbar nav-bkg">
     <nav class="content-container pagewide-bar-padding">
-      <span class="divider">/ </span>
-      <a href="{{ .Site.Home.RelPermalink  }}" >{{ .Site.Title  }}</a>
+      <a href="{{ .Site.Home.RelPermalink }}" class="site-title">{{ .Site.Title }}</a>
       {{ block "breadcrumbs" . }}
         {{- with .Parent -}}
           {{- if not .IsHome -}}
-          <span class="divider">/ </span>
+          <span class="divider"> / </span>
           <a href="{{ .RelPermalink }}">
             {{- with .Params.breadcrumb_label -}}
               {{- . -}}
