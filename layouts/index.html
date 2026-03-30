@@ -3,7 +3,6 @@ sticky-nav
 {{ end }}
 {{ define "content" }}
 <section id="main" class="content-container article-pad-v">
-  <h1 id="title" style="margin-bottom: 0.2em">{{ .Site.Title }}</h1>
   {{ $posts := where .Site.RegularPages "Section" "posts" }}
   {{ range $posts.ByDate.Reverse }}
   {{- if .Param "mostlyHidden" -}}
