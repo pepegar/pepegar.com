@@ -1,0 +1,92 @@
+{{ define "body-classes" -}}
+  {{ if .Draft }}draft{{ end }} look-sheet-bkg
+{{- end }}
+
+{{ define "content" }}
+<article
+    id="main"
+    class="content-container look-sheet article-pad-v {{ if (or .Params.disableMarginNotes .Site.Params.disableMarginNotes) }}no-floating-footnotes{{ end }} sidepull-container"
+    itemscope
+    itemtype="https://schema.org/Article" >
+  <meta itemprop="author" content="{{ .Site.Params.Author }}" />
+  <meta itemprop="publisher" content="{{ .Site.Params.Author }}" />
+  <meta itemprop="image" content="{{ partial "feature_image" . }}" />
+  
+  <!-- Note indicator -->
+  <div style="font-size: 0.9em; color: var(--accent-color, #007acc); margin-bottom: 0.5em;">
+    📝 <a href="/notes" style="color: var(--accent-color, #007acc); text-decoration: none;">Notes</a>
+  </div>
+  
+  <h1 itemprop="name" id="title">{{ .Title }}</h1>
+  <meta itemprop="headline" content="{{ .Title }}" />
+  
+  {{ with .Params.tags }}
+  <div class="post-tags">
+  {{ range . }}
+    <a href="{{ (urlize (printf "tags/%s/" .)) | absLangURL }}">#{{ . }}</a>&nbsp;
+  {{ end }}
+  </div>
+  {{ end }}
+  
+  {{ if .Date }}
+    {{ if eq .Lastmod .Date }}
+      <div class="post-date"><span itemprop="datePublished">{{ .Date.Format "January 2, 2006" }}</span></div>
+      <meta itemprop="dateModified" content="{{ .Lastmod.Format "January 2, 2006" }}"/>
+    {{ else }}
+      <div class="post-date">Created: <span itemprop="datePublished">{{ .Date.Format "January 2, 2006" }}</span></div>
+      <div class="post-date">Last Edited: <span itemprop="dateModified">{{ .Lastmod.Format "January 2, 2006" }}</span></div>
+    {{ end }}
+  {{ end }}
+  
+  <!-- Simplified sidebar for notes - no TOC unless it's a longer note -->
+  {{ if gt .WordCount 300 }}
+  <div class="sidepull-side">
+    <h2>Table of contents</h2>
+    {{ .TableOfContents }}
+  </div>
+  {{ end }}
+  
+  {{ if .Draft }}
+    <div class="post-date">{{ .WordCount }} words</div>
+  {{ end }}
+  
+  <div itemprop="articleBody" id="content" class="article-body margin-top-2em">
+    {{ .Content }}
+  </div>
+  
+  <!-- Comments for notes too -->
+  <script src="https://utteranc.es/client.js"
+          repo="pepegar/pepegar.com"
+          issue-term="pathname"
+          theme="preferred-color-scheme"
+          crossorigin="anonymous"
+          async>
+  </script>
+</article>
+{{ end }}
+
+{{ define "footer" }}
+  {{ $filteredPages := where .CurrentSection.Pages "Params.mostlyHidden" "ne" true }}
+  {{ $prev := $filteredPages.Prev . }}
+  {{ $next := $filteredPages.Next . }}
+  {{if (and (not .Parent.IsHome) (or $prev $next)) }}
+    <div class="nav-bkg-50 content-container-narrow-pad bottom-links text-0p75 drop-shadow">
+      <nav class="flex-row">
+      {{with $prev }}
+      <a href="{{.Permalink}}" class="flex-row v-center no-underline" style="max-width:45%;">
+        <span class="text-1p5">←</span>&nbsp;<span class="re-underline">Previous note: {{ .Title }}</span>
+      </a>
+      {{else}}
+        <span class="flex-row v-center"></span>
+      {{end}}
+      {{with $next }}
+        <a href="{{.Permalink}}" class="flex-row v-center no-underline" style="max-width: 45%;">
+        <span class="re-underline">Next note: {{.Title}}</span>&nbsp;<span class="text-1p5">→</span>
+        </a>
+      {{else}}
+        <span class="flex-row v-center"></span>
+      {{end}}
+      </nav>
+    </div>
+  {{ end }}
+{{ end }}
