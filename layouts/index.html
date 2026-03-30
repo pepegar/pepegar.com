@@ -1,0 +1,23 @@
+{{ define "body-classes" }}
+sticky-nav
+{{ end }}
+{{ define "content" }}
+<section id="main" class="content-container article-pad-v">
+  <h1 id="title" style="margin-bottom: 0.2em">{{ .Site.Title }}</h1>
+  {{ $posts := where .Site.RegularPages "Section" "posts" }}
+  {{ range $posts.ByDate.Reverse }}
+  {{- if .Param "mostlyHidden" -}}
+    {{- continue -}}
+  {{- end -}}
+  {{ if not .Draft }}
+  <div class="homepage-post">
+    <h2 class="homepage-post-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+    <div class="post-date">{{ .Date.Format "January 2, 2006" }}</div>
+    {{ with .Summary }}
+    <p class="homepage-post-excerpt">{{ . }}</p>
+    {{ end }}
+  </div>
+  {{ end }}
+  {{ end }}
+</section>
+{{ end }}
