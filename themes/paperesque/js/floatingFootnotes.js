@@ -6,6 +6,10 @@ const FOOTNOTE_SECTION_SELECTOR = "div.footnotes[role=doc-endnotes]";
 // this is a prefix-match on ID.
 const INDIVIDUAL_FOOTNOTE_SELECTOR = "li[id^='fn:']";
 const FLOATING_FOOTNOTE_MIN_WIDTH = 1260;
+const LEFT_MARGIN_SELECTOR = ".sidepull-side";
+const WIDE_CONTENT_SELECTOR = ".wide-content";
+const LEFT_SIDE_CLASS = "floating-footnote-left";
+const RIGHT_SIDE_CLASS = "floating-footnote-right";
 
 // Computes an offset such that setting `top` on elemToAlign will put it
 // in vertical alignment with targetAlignment.
@@ -15,10 +19,81 @@ function computeOffsetForAlignment(elemToAlign, targetAlignment) {
     return targetAlignment.getBoundingClientRect().top - offsetParentTop;
 }
 
+function computeInitialLeftLaneBottom(footnoteSection) {
+    const article = document.querySelector(ARTICLE_CONTENT_SELECTOR);
+    const leftMarginElement = article && article.querySelector(LEFT_MARGIN_SELECTOR);
+
+    if (!leftMarginElement || window.getComputedStyle(leftMarginElement).display === "none") {
+        return 0;
+    }
+
+    const footnoteSectionTop = footnoteSection.offsetParent.getBoundingClientRect().top;
+    const leftMarginRect = leftMarginElement.getBoundingClientRect();
+
+    return Math.max(0, leftMarginRect.bottom - footnoteSectionTop + parseInt(window.getComputedStyle(document.documentElement).fontSize));
+}
+
+function computeWideContentObstructions(footnoteSection) {
+    const footnoteSectionTop = footnoteSection.offsetParent.getBoundingClientRect().top;
+    const wideContentBlocks = document.querySelectorAll(WIDE_CONTENT_SELECTOR);
+
+    return Array.prototype.map.call(wideContentBlocks, function (wideContent) {
+        const wideContentRect = wideContent.getBoundingClientRect();
+        const wideContentStyle = window.getComputedStyle(wideContent);
+        const marginTop = parseInt(wideContentStyle.marginTop) || 0;
+        const marginBottom = parseInt(wideContentStyle.marginBottom) || 0;
+
+        return {
+            top: wideContentRect.top - footnoteSectionTop - marginTop,
+            bottom: wideContentRect.bottom - footnoteSectionTop + marginBottom
+        };
+    }).sort(function (a, b) {
+        return a.top - b.top;
+    });
+}
+
+function pushPastObstructions(offset, height, obstructions) {
+    let adjustedOffset = offset;
+    let changed = true;
+
+    while (changed) {
+        changed = false;
+
+        Array.prototype.forEach.call(obstructions, function (obstruction) {
+            const bottom = adjustedOffset + height;
+            const overlaps = adjustedOffset < obstruction.bottom && bottom > obstruction.top;
+
+            if (overlaps) {
+                adjustedOffset = obstruction.bottom;
+                changed = true;
+            }
+        });
+    }
+
+    return adjustedOffset;
+}
+
+function useLeftLane(footnote, offset, bottomOfRightLane) {
+    if (offset >= bottomOfRightLane) {
+        return false;
+    }
+
+    footnote.classList.add(LEFT_SIDE_CLASS);
+    footnote.classList.remove(RIGHT_SIDE_CLASS);
+    return true;
+}
+
+function useRightLane(footnote) {
+    footnote.classList.add(RIGHT_SIDE_CLASS);
+    footnote.classList.remove(LEFT_SIDE_CLASS);
+}
+
 function setFootnoteOffsets(footnotes) {
-    // Keep track of the bottom of the last element, because we don't want to
-    // overlap footnotes.
-    let bottomOfLastElem = 0;
+    const footnoteSection = document.querySelector(FOOTNOTE_SECTION_SELECTOR);
+    const wideContentObstructions = computeWideContentObstructions(footnoteSection);
+    let bottomOfRightLane = 0;
+    let bottomOfLeftLane = computeInitialLeftLaneBottom(footnoteSection);
+
     Array.prototype.forEach.call(footnotes, function (footnote, i) {
 
         // In theory, don't need to escape this because IDs can't contain
@@ -33,18 +108,22 @@ function setFootnoteOffsets(footnotes) {
         const verticalAlignmentTarget = intextLink.closest('p,li') || intextLink;
 
         let offset = computeOffsetForAlignment(footnote, verticalAlignmentTarget);
-        if (offset < bottomOfLastElem) {
-            offset = bottomOfLastElem;
-        }
-        // computedStyle values are always in pixels, but have the suffix 'px'.
-        // offsetHeight doesn't include margins, but we want it to use them so
-        // we retain the style / visual fidelity when all the footnotes are
-        // crammed together.
-        bottomOfLastElem =
-            offset +
+        const footnoteStyle = window.getComputedStyle(footnote);
+        const footnoteOuterHeight =
             footnote.offsetHeight +
-            parseInt(window.getComputedStyle(footnote).marginBottom) +
-            parseInt(window.getComputedStyle(footnote).marginTop);
+            parseInt(footnoteStyle.marginBottom) +
+            parseInt(footnoteStyle.marginTop);
+        const shouldUseLeftLane = useLeftLane(footnote, offset, bottomOfRightLane);
+
+        if (shouldUseLeftLane) {
+            offset = Math.max(offset, bottomOfLeftLane);
+            offset = pushPastObstructions(offset, footnoteOuterHeight, wideContentObstructions);
+            bottomOfLeftLane = offset + footnoteOuterHeight;
+        } else {
+            useRightLane(footnote);
+            offset = pushPastObstructions(offset, footnoteOuterHeight, wideContentObstructions);
+            bottomOfRightLane = offset + footnoteOuterHeight;
+        }
 
         footnote.style.top = offset + 'px';
         footnote.style.position = 'absolute';
@@ -56,6 +135,8 @@ function clearFootnoteOffsets(footnotes) {
     Array.prototype.forEach.call(footnotes, function (fn, i) {
         fn.style.top = null;
         fn.style.position = null;
+        fn.classList.remove(LEFT_SIDE_CLASS);
+        fn.classList.remove(RIGHT_SIDE_CLASS);
     });
 }
 
