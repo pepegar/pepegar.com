@@ -27,25 +27,32 @@
   <body
   class="{{ block "body-classes" . }}{{ end }}"
   lang="{{ .Site.LanguageCode }}">
-  <div class="navbar nav-bkg">
-    <nav class="content-container pagewide-bar-padding">
-      <a href="{{ .Site.Home.RelPermalink }}" class="site-title">{{ .Site.Title }}</a>
-      {{ block "breadcrumbs" . }}
-        {{- with .Parent -}}
-          {{- if not .IsHome -}}
-          <span class="divider"> / </span>
-          <a href="{{ .RelPermalink }}">
-            {{- with .Params.breadcrumb_label -}}
-              {{- . -}}
-            {{- else -}}
-              {{- .Title -}}
+  <div class="navbar nav-bkg site-masthead">
+    <div class="content-container pagewide-bar-padding">
+      <nav class="masthead-line" aria-label="Site navigation">
+        <div class="masthead-identity">
+          <a href="{{ .Site.Home.RelPermalink }}" class="site-title">{{ .Site.Title }}</a>
+          {{ block "breadcrumbs" . }}
+            {{- with .Parent -}}
+              {{- if not .IsHome -}}
+              <span class="divider"> / </span>
+              <a href="{{ .RelPermalink }}">
+                {{- with .Params.breadcrumb_label -}}
+                  {{- . -}}
+                {{- else -}}
+                  {{- .Title -}}
+                {{- end -}}
+              </a>
+              {{- end -}}
             {{- end -}}
-          </a>
-          {{- end -}}
-        {{- end -}}
+          {{ end }}
+        </div>
+        {{ partial "right-links" . }}
+      </nav>
+      {{ with .Site.Params.subtitle }}
+        <p class="site-subtitle">{{ . }}</p>
       {{ end }}
-      {{ partial "right-links" . }}
-    </nav>
+    </div>
   </div>
   {{ block "content" . }}{{ end }}
   {{ if not .Params.hide_footer }}

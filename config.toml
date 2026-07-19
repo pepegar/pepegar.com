@@ -12,10 +12,6 @@ pygmentscodefencesguesssyntax = true
 staticDir = ['static']
 
 [[params.topmenu]]
-  name = "notes"
-  url = "notes"
-
-[[params.topmenu]]
   name = "rss"
   url = "posts/index.xml"
 
