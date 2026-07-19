@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# /// script
+# requires-python = ">=3.13"
+# dependencies = ["colorama==0.4.6"]
+# ///
 
 import re
 import subprocess

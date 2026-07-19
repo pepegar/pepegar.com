@@ -1,0 +1,28 @@
+[tools]
+# mise relies on the system Git installation.
+hugo = "0.148.2"
+python = "3.13.5"
+ruff = "0.12.4"
+uv = "0.11.29"
+
+[hooks]
+postinstall = '''
+expected_hook="$(mktemp)"
+trap 'rm -f "$expected_hook"' EXIT
+mise generate git-pre-commit > "$expected_hook"
+if ! diff -q -B "$expected_hook" .git/hooks/pre-commit >/dev/null 2>&1; then
+  mise generate git-pre-commit --write
+fi
+'''
+
+[tasks.preprocess]
+description = "Regenerate Markdown files from their .md.in sources"
+run = 'uv run --python "$(command -v python)" scripts/preprocess.py content'
+
+[tasks.pre-commit]
+description = "Check generated Markdown when a .md.in source is staged"
+run = '''
+if [ -z "${MISE_PRE_COMMIT:-}" ] || printf '%s\n' "${STAGED:-}" | grep -Eq '\.md\.in([[:space:]]|$)'; then
+  uv run --python "$(command -v python)" scripts/preprocess.py content --check
+fi
+'''
