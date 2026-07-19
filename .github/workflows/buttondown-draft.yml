@@ -1,0 +1,33 @@
+name: Create Buttondown draft
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "content/posts/**"
+
+permissions:
+  contents: read
+
+jobs:
+  create-draft:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out the full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Create drafts for newly published posts
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+        run: >-
+          python scripts/create_buttondown_drafts.py
+          --before "${{ github.event.before }}"
+          --after "${{ github.sha }}"

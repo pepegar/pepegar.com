@@ -21,3 +21,7 @@ hugo.linux
 # mise
 mise.local.toml
 mise.local.lock
+
+# Python test/runtime caches
+__pycache__/
+*.py[cod]
