@@ -1,0 +1,103 @@
+.newsletter-signup {
+  border-top: var(--border-thickness) solid var(--color-rule);
+  padding: calc(var(--line-height) * 1.5) 0;
+}
+
+.newsletter-signup--home {
+  margin-top: calc(var(--line-height) * 2);
+  border-top: 0;
+}
+
+.newsletter-signup--article {
+  margin-top: calc(var(--line-height) * 2);
+}
+
+.newsletter-signup__copy {
+  margin-bottom: var(--line-height);
+}
+
+.newsletter-signup__heading {
+  margin: 0 0 calc(var(--line-height) * 0.25);
+  padding: 0;
+  border: 0;
+  font-size: 1.5rem;
+}
+
+.newsletter-signup__copy p {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.newsletter-signup__form label {
+  display: block;
+  margin-bottom: calc(var(--line-height) * 0.25);
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-variant: all-small-caps;
+}
+
+.newsletter-signup__fields {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+
+.newsletter-signup__fields input[type="email"] {
+  flex: 1;
+  min-width: 0;
+  border: var(--border-thickness) solid var(--color-rule);
+  border-radius: 0;
+  padding: calc(var(--line-height) * 0.25) 0.75rem;
+  color: var(--color-text);
+  background: var(--color-bg);
+  font: inherit;
+  line-height: var(--line-height);
+}
+
+.newsletter-signup__fields input[type="email"]::placeholder {
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+
+.newsletter-signup__fields button {
+  appearance: none;
+  border: var(--border-thickness) solid var(--color-text);
+  border-radius: 0;
+  padding: calc(var(--line-height) * 0.25) 1rem;
+  color: var(--color-bg);
+  background: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-variant: all-small-caps;
+  line-height: var(--line-height);
+  cursor: pointer;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.newsletter-signup__fields button:hover {
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+.newsletter-signup__fields input[type="email"]:focus-visible,
+.newsletter-signup__fields button:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
+
+.newsletter-signup__note {
+  margin: calc(var(--line-height) * 0.25) 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  line-height: var(--line-height);
+}
+
+@media(max-width: 480px) {
+  .newsletter-signup__fields {
+    flex-direction: column;
+  }
+
+  .newsletter-signup__fields button {
+    width: 100%;
+  }
+}

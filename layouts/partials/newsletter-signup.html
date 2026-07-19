@@ -1,0 +1,36 @@
+{{- $username := .context.Site.Params.buttondownUsername -}}
+{{- with $username }}
+<section
+  class="newsletter-signup newsletter-signup--{{ $.placement }}"
+  aria-labelledby="newsletter-heading"
+>
+  <div class="newsletter-signup__copy">
+    <h2 id="newsletter-heading" class="newsletter-signup__heading">New posts by email</h2>
+    <p>Occasional notes about computers, delivered when I publish.</p>
+  </div>
+  <form
+    class="newsletter-signup__form"
+    action="https://buttondown.com/api/emails/embed-subscribe/{{ . }}"
+    method="post"
+  >
+    <label for="newsletter-email">Email address</label>
+    <div class="newsletter-signup__fields">
+      <input
+        id="newsletter-email"
+        name="email"
+        type="email"
+        autocomplete="email"
+        inputmode="email"
+        placeholder="you@example.com"
+        aria-describedby="newsletter-note"
+        required
+      >
+      <input type="hidden" name="embed" value="1">
+      <button type="submit">Subscribe</button>
+    </div>
+    <p id="newsletter-note" class="newsletter-signup__note">
+      You’ll get a confirmation email first. Unsubscribe anytime.
+    </p>
+  </form>
+</section>
+{{- end }}

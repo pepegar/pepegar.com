@@ -16,6 +16,7 @@ staticDir = ['static']
   url = "posts/index.xml"
 
 [params]
+  buttondownUsername = "pepegar"
   mode="auto" # color-mode → light,dark or auto
   featherIconsCDN=true
   subtitle = "Rants about computers"

@@ -1,0 +1,2 @@
+{{- $newsletterCSS := resources.Get "css/newsletter.css" | minify | fingerprint -}}
+<link rel="stylesheet" href="{{ $newsletterCSS.RelPermalink }}">
